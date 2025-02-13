@@ -1,7 +1,6 @@
 package com.example.demo.config;
 
-import com.zaxxer.hikari.HikariDataSource;
-import oracle.jdbc.pool.OracleDataSource;
+
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -11,7 +10,6 @@ import org.testcontainers.utility.MountableFile;
 
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.Duration;
 
 
@@ -36,9 +34,7 @@ public class TestContainerDatabaseConfiguration {
         // Run the init.sql script as sysdba on the database container.
         try {
             oracleContainer.execInContainer("sqlplus", "sys / as sysdba", "@/tmp/init.sql");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }

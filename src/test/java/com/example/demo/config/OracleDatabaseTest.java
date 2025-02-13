@@ -17,7 +17,6 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import javax.sql.DataSource;
 
-import static com.example.demo.config.TestContainerDatabaseConfiguration.oracleContainer;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
